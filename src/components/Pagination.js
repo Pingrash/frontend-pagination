@@ -29,7 +29,7 @@ const Pagination = ({
           ) : (
             <a
               className='page-link'
-              href='!#'
+              href='#'
               onClick={() => paginate(currentPage - 1)}
             >
               Previous
@@ -45,7 +45,7 @@ const Pagination = ({
             aria-current={currentPage === number ? 'page' : null}
           >
             <a
-              href='!#'
+              href='#'
               className='page-link'
               onClick={() => paginate(number)}
             >
@@ -66,7 +66,7 @@ const Pagination = ({
           ) : (
             <a
               className='page-link'
-              href='!#'
+              href='#'
               onClick={() => paginate(currentPage + 1)}
             >
               Next
