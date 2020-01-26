@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Pagination = ({
   postsPerPage,
@@ -23,17 +24,17 @@ const Pagination = ({
           className={`page-item ${
             currentPage === 1 ? 'disabled' : null
           }`}
+          data-test='previous'
         >
           {currentPage === 1 ? (
             <span className='page-link'>Previous</span>
           ) : (
-            <a
+            <button
               className='page-link'
-              href='#'
               onClick={() => paginate(currentPage - 1)}
             >
               Previous
-            </a>
+            </button>
           )}
         </li>
         {pageNumbers.map(number => (
@@ -43,9 +44,9 @@ const Pagination = ({
               currentPage === number ? 'active' : null
             }`}
             aria-current={currentPage === number ? 'page' : null}
+            data-test='page-number'
           >
-            <a
-              href='#'
+            <button
               className='page-link'
               onClick={() => paginate(number)}
             >
@@ -53,24 +54,24 @@ const Pagination = ({
               {currentPage === number ? (
                 <span className='sr-only'>(current)</span>
               ) : null}
-            </a>
+            </button>
           </li>
         ))}
         <li
           className={`page-item ${
             currentPage === totalPages ? 'disabled' : null
           }`}
+          data-test='next'
         >
           {currentPage === totalPages ? (
             <span className='page-link'>Next</span>
           ) : (
-            <a
+            <button
               className='page-link'
-              href='#'
               onClick={() => paginate(currentPage + 1)}
             >
               Next
-            </a>
+            </button>
           )}
         </li>
 
@@ -94,6 +95,14 @@ const Pagination = ({
       </ul>
     </nav>
   );
+};
+
+Pagination.propTypes = {
+  postsPerPage: PropTypes.number,
+  totalPosts: PropTypes.number,
+  paginate: PropTypes.func,
+  currentPage: PropTypes.number,
+  setPostsPerPageSize: PropTypes.func
 };
 
 export default Pagination;
